@@ -33,14 +33,49 @@
   <main class="main-container">
     <!-- Carousel Section -->
     <section class="carousel-section">
-      <div class="carousel">
-        <div class="carousel-item active">
-          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&h=400&fit=crop" alt="The Shawshank Redemption">
-          <div class="carousel-caption">
-            <h2>The Shawshank Redemption</h2>
-            <p>Two imprisoned men bond over years, finding redemption through acts of common decency.</p>
+      <div class="carousel" id="movieCarousel">
+        <div class="carousel-indicators">
+          <button class="indicator active" data-slide="0" aria-label="Slide 1"></button>
+          <button class="indicator" data-slide="1" aria-label="Slide 2"></button>
+          <button class="indicator" data-slide="2" aria-label="Slide 3"></button>
+          <button class="indicator" data-slide="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&h=400&fit=crop" alt="The Shawshank Redemption">
+            <div class="carousel-caption">
+              <h2>The Shawshank Redemption</h2>
+              <p>Two imprisoned men bond over years, finding redemption through acts of common decency.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&h=400&fit=crop" alt="The Dark Knight">
+            <div class="carousel-caption">
+              <h2>The Dark Knight</h2>
+              <p>When the menace known as the Joker emerges, Batman must accept one of the greatest tests.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=400&fit=crop" alt="Inception">
+            <div class="carousel-caption">
+              <h2>Inception</h2>
+              <p>A thief who steals corporate secrets through dream-sharing technology is given the inverse task.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&h=400&fit=crop" alt="Pulp Fiction">
+            <div class="carousel-caption">
+              <h2>Pulp Fiction</h2>
+              <p>The lives of two mob hitmen, a boxer, and a pair of diner bandits intertwine.</p>
+            </div>
           </div>
         </div>
+        <button class="carousel-control prev" aria-label="Previous slide">
+          <span class="carousel-control-icon">&#10094;</span>
+        </button>
+        <button class="carousel-control next" aria-label="Next slide">
+          <span class="carousel-control-icon">&#10095;</span>
+        </button>
       </div>
     </section>
 
@@ -179,13 +214,80 @@
   </footer>
 
   <script>
+    // Carousel functionality
+    const carousel = document.getElementById('movieCarousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    const indicators = carousel.querySelectorAll('.indicator');
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+    let currentSlide = 0;
+    let autoPlayInterval;
+
+    function showSlide(index) {
+      // Remove active class from all items and indicators
+      items.forEach(item => item.classList.remove('active'));
+      indicators.forEach(indicator => indicator.classList.remove('active'));
+      
+      // Add active class to current item and indicator
+      items[index].classList.add('active');
+      indicators[index].classList.add('active');
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % items.length;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      const prev = (currentSlide - 1 + items.length) % items.length;
+      showSlide(prev);
+    }
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(nextSlide, 4000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    // Event listeners for navigation buttons
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      stopAutoPlay();
+      startAutoPlay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      stopAutoPlay();
+      startAutoPlay();
+    });
+
+    // Event listeners for indicators
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        showSlide(index);
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+
+    // Start autoplay
+    startAutoPlay();
+
     // Search functionality
     document.getElementById('searchInput').addEventListener('input', function(e) {
       const searchTerm = e.target.value.toLowerCase();
       const movieCards = document.querySelectorAll('.movie-card');
       
       movieCards.forEach(card => {
-        const title = card.querySelector('h5').textContent.toLowerCase();
+        const title = card.querySelector('h3').textContent.toLowerCase();
         const genre = card.querySelector('.genre').textContent.toLowerCase();
         
         if (title.includes(searchTerm) || genre.includes(searchTerm)) {

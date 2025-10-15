@@ -93,21 +93,40 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.carousel-inner {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  width: 100%;
+  height: 450px;
 }
 
 .carousel-item {
-  position: relative;
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  pointer-events: none;
 }
 
 .carousel-item.active {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .carousel-item img {
   width: 100%;
-  height: 450px;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .carousel-caption {
@@ -133,7 +152,78 @@ body {
   margin: 0;
 }
 
+/* Carousel Controls */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 16px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+  border-radius: 4px;
+}
+
+.carousel-control:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control.prev {
+  left: 20px;
+}
+
+.carousel-control.next {
+  right: 20px;
+}
+
+.carousel-control-icon {
+  font-size: 1.5rem;
+  display: block;
+  line-height: 1;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.carousel-indicators .indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-indicators .indicator:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.carousel-indicators .indicator.active {
+  background: white;
+  width: 30px;
+  border-radius: 6px;
+}
+
 @media (max-width: 768px) {
+  .carousel-inner {
+    height: 250px;
+  }
+  
   .carousel-item img {
     height: 250px;
   }
@@ -144,6 +234,14 @@ body {
   
   .carousel-caption p {
     display: none;
+  }
+  
+  .carousel-control {
+    padding: 12px;
+  }
+  
+  .carousel-control-icon {
+    font-size: 1rem;
   }
 }
 
