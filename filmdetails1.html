@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Shawshank Redemption (1994) - Een meesterlijk drama over hoop en vriendschap. Bekijk cast, reviews en gedetailleerde informatie over deze iconische film.">
+  <title>The Shawshank Redemption - Movie Explorer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><i class="fas fa-film"></i>Movie Explorer</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="filminput.html">Add Movie</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="detail-hero">
+    <div class="detail-hero-container">
+      <div class="detail-hero-grid">
+        <div class="detail-hero-poster">
+          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=600&fit=crop" alt="The Shawshank Redemption" class="movie-poster">
+        </div>
+        <div class="detail-hero-info">
+          <h1>The Shawshank Redemption</h1>
+          <p class="lead">Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
+          <div class="badges">
+            <span class="badge">Drama</span>
+            <span class="badge">1994</span>
+          </div>
+          <div class="rating-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span class="rating-text">9.3/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="detail-grid">
+      <!-- Left Column -->
+      <div class="detail-left">
+        <!-- Movie Info -->
+        <div class="info-card">
+          <h3><i class="fas fa-info-circle"></i>Film Informatie</h3>
+          <div class="info-grid">
+            <div>
+              <p><strong>Regisseur:</strong> Frank Darabont</p>
+              <p><strong>Jaar:</strong> 1994</p>
+              <p><strong>Duur:</strong> 142 minuten</p>
+            </div>
+            <div>
+              <p><strong>Genre:</strong> Drama</p>
+              <p><strong>Land:</strong> Verenigde Staten</p>
+              <p><strong>Taal:</strong> Engels</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="info-card">
+          <h3><i class="fas fa-book"></i>Beschrijving</h3>
+          <div class="description-short" id="shortDesc">
+            <p>The Shawshank Redemption vertelt het verhaal van Andy Dufresne, een bankier die onterecht wordt veroordeeld voor de moord op zijn vrouw en haar minnaar.</p>
+            <button class="btn-primary btn-sm" onclick="toggleDescription()">Lees meer <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="description-full" id="fullDesc">
+            <p>The Shawshank Redemption vertelt het verhaal van Andy Dufresne, een bankier die onterecht wordt veroordeeld voor de moord op zijn vrouw en haar minnaar. Hij wordt veroordeeld tot een levenslange gevangenisstraf in Shawshank State Penitentiary.</p>
+            <p>In de gevangenis sluit Andy vriendschap met Ellis "Red" Redding, een medegevangene die al lange tijd vastzitten. Door zijn intelligentie en financiële vaardigheden weet Andy zich nuttig te maken voor de gevangenisautoriteiten, maar hij blijft altijd hoop houden op vrijheid.</p>
+            <p>De film is een meesterwerk over hoop, vriendschap en doorzettingsvermogen in de meest uitdagende omstandigheden. Het is gebaseerd op een novelle van Stephen King en wordt beschouwd als een van de beste films aller tijden.</p>
+            <button class="btn-secondary btn-sm" onclick="toggleDescription()">Lees minder <i class="fas fa-chevron-up"></i></button>
+          </div>
+        </div>
+
+        <!-- Cast -->
+        <div class="info-card">
+          <h3><i class="fas fa-users"></i>Cast</h3>
+          <div class="cast-grid">
+            <div class="actor-card">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop" alt="Tim Robbins">
+              <a href="actor1.html">Tim Robbins</a>
+              <p class="text-muted small">Andy Dufresne</p>
+            </div>
+            <div class="actor-card">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Morgan Freeman">
+              <a href="actor2.html">Morgan Freeman</a>
+              <p class="text-muted small">Ellis Redding</p>
+            </div>
+            <div class="actor-card">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop" alt="Bob Gunton">
+              <p>Bob Gunton</p>
+              <p class="text-muted small">Warden Norton</p>
+            </div>
+            <div class="actor-card">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="William Sadler">
+              <p>William Sadler</p>
+              <p class="text-muted small">Heywood</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="info-card">
+          <h3><i class="fas fa-comments"></i>Reviews van Gebruikers</h3>
+          
+          <div class="review-card">
+            <div class="review-author">Jan Pietersen</div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              5/5
+            </div>
+            <p>Een absolute meesterwerk! De beste film die ik ooit heb gezien. Het verhaal, de acteurs, de regie - alles is perfect. Een must-see voor iedereen.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-author">Maria de Vries</div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              5/5
+            </div>
+            <p>Ontroerend en inspirerend. De vriendschap tussen Andy en Red is zo mooi uitgewerkt. Deze film blijft je lang bij.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-author">Peter Jansen</div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              4/5
+            </div>
+            <p>Geweldige film met een prachtig verhaal. Soms iets langzaam, maar absoluut de moeite waard om te kijken.</p>
+          </div>
+        </div>
+
+        <!-- Add Review Form -->
+        <div class="info-card">
+          <h3><i class="fas fa-pen"></i>Schrijf je eigen Review</h3>
+          <form>
+            <div class="form-group">
+              <label for="reviewName">Je Naam</label>
+              <input type="text" id="reviewName" required>
+            </div>
+            <div class="form-group">
+              <label for="reviewRating">Rating</label>
+              <select id="reviewRating" required>
+                <option value="">Kies een rating...</option>
+                <option value="5">5 sterren - Uitstekend</option>
+                <option value="4">4 sterren - Goed</option>
+                <option value="3">3 sterren - Gemiddeld</option>
+                <option value="2">2 sterren - Matig</option>
+                <option value="1">1 ster - Slecht</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="reviewText">Je Review</label>
+              <textarea id="reviewText" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-paper-plane"></i>Verstuur Review
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="detail-right">
+        <!-- Rating Summary -->
+        <div class="info-card rating-summary">
+          <h3>Gebruikers Rating</h3>
+          <div class="rating-large">9.3</div>
+          <div class="rating-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-muted">Gebaseerd op 2,847 reviews</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Movie Explorer. Alle rechten voorbehouden.</p>
+      <p><a href="about.html">Over de maker</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDescription() {
+      const shortDesc = document.getElementById('shortDesc');
+      const fullDesc = document.getElementById('fullDesc');
+      
+      if (fullDesc.classList.contains('show')) {
+        fullDesc.classList.remove('show');
+        shortDesc.style.display = 'block';
+      } else {
+        fullDesc.classList.add('show');
+        shortDesc.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

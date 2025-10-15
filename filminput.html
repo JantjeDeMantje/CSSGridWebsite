@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Voeg je favoriete film toe aan Movie Explorer. Deel informatie over regisseur, cast, rating en beschrijving met onze film community.">
+  <title>Film Toevoegen - Movie Explorer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><i class="fas fa-film"></i>Movie Explorer</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="filminput.html">Add Movie</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="detail-hero">
+    <div class="detail-hero-container text-center">
+      <h1><i class="fas fa-plus-circle"></i>Voeg een Nieuwe Film Toe</h1>
+      <p class="lead">Deel je favoriete film met onze community</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="form-page-grid">
+      <div class="form-main">
+        <div class="info-card">
+          <form id="movieForm">
+            <!-- Basic Information -->
+            <h3 class="text-gradient"><i class="fas fa-info-circle"></i>Basis Informatie</h3>
+            
+            <div class="form-row">
+              <div class="form-col-8">
+                <label for="movieTitle" class="form-label">Filmtitel *</label>
+                <input type="text" class="form-control" id="movieTitle" required placeholder="Bijv. The Shawshank Redemption">
+              </div>
+              
+              <div class="form-col-4">
+                <label for="movieYear" class="form-label">Jaar *</label>
+                <input type="number" class="form-control" id="movieYear" required min="1900" max="2025" placeholder="2024">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-col-6">
+                <label for="movieDirector" class="form-label">Regisseur *</label>
+                <input type="text" class="form-control" id="movieDirector" required placeholder="Bijv. Frank Darabont">
+              </div>
+              
+              <div class="form-col-6">
+                <label for="movieDuration" class="form-label">Duur (minuten) *</label>
+                <input type="number" class="form-control" id="movieDuration" required min="1" placeholder="142">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-col-6">
+                <label for="movieGenre" class="form-label">Genre *</label>
+                <select class="form-control" id="movieGenre" required>
+                  <option value="">Selecteer een genre...</option>
+                  <option value="Action">Action</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Crime">Crime</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Fantasy">Fantasy</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Thriller">Thriller</option>
+                </select>
+              </div>
+              
+              <div class="form-col-6">
+                <label for="movieLanguage" class="form-label">Taal *</label>
+                <input type="text" class="form-control" id="movieLanguage" required placeholder="Bijv. Engels">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="movieCountry" class="form-label">Land *</label>
+              <input type="text" class="form-control" id="movieCountry" required placeholder="Bijv. Verenigde Staten">
+            </div>
+
+            <!-- Description -->
+            <h3 class="text-gradient section-heading"><i class="fas fa-align-left"></i>Beschrijving</h3>
+            
+            <div class="form-group">
+              <label for="movieShortDesc" class="form-label">Korte Beschrijving *</label>
+              <textarea class="form-control" id="movieShortDesc" rows="3" required placeholder="Een korte samenvatting van de film (1-2 zinnen)"></textarea>
+              <div class="form-text">Deze wordt getoond als preview</div>
+            </div>
+
+            <div class="form-group">
+              <label for="movieLongDesc" class="form-label">Volledige Beschrijving *</label>
+              <textarea class="form-control" id="movieLongDesc" rows="6" required placeholder="Een uitgebreide beschrijving van het verhaal"></textarea>
+            </div>
+
+            <!-- Cast -->
+            <h3 class="text-gradient section-heading"><i class="fas fa-users"></i>Cast</h3>
+            
+            <div id="castContainer">
+              <div class="cast-member">
+                <div class="form-col-5">
+                  <label class="form-label">Acteur Naam</label>
+                  <input type="text" class="form-control" placeholder="Bijv. Tim Robbins">
+                </div>
+                <div class="form-col-5">
+                  <label class="form-label">Rol</label>
+                  <input type="text" class="form-control" placeholder="Bijv. Andy Dufresne">
+                </div>
+                <div class="form-col-2 cast-button">
+                  <button type="button" class="btn-danger btn-full" onclick="removeCastMember(this)">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <button type="button" class="btn-secondary cast-add-btn" onclick="addCastMember()">
+              <i class="fas fa-plus"></i>Voeg Acteur Toe
+            </button>
+
+            <!-- Rating -->
+            <h3 class="text-gradient section-heading"><i class="fas fa-star"></i>Beoordeling</h3>
+            
+            <div class="form-row">
+              <div class="form-col-6">
+                <label for="movieRating" class="form-label">Rating (1-10) *</label>
+                <input type="number" class="form-control" id="movieRating" required min="1" max="10" step="0.1" placeholder="8.5">
+              </div>
+              
+              <div class="form-col-6">
+                <label for="movieReviews" class="form-label">Aantal Reviews</label>
+                <input type="number" class="form-control" id="movieReviews" min="0" placeholder="1000">
+              </div>
+            </div>
+
+            <!-- Image URL -->
+            <h3 class="text-gradient section-heading"><i class="fas fa-image"></i>Afbeelding</h3>
+            
+            <div class="form-group">
+              <label for="movieImage" class="form-label">Afbeelding URL</label>
+              <input type="url" class="form-control" id="movieImage" placeholder="https://example.com/movie-poster.jpg">
+              <div class="form-text">Link naar de filmposter</div>
+            </div>
+
+            <!-- Submit Buttons -->
+            <div class="form-buttons">
+              <button type="submit" class="btn-primary btn-lg btn-grow">
+                <i class="fas fa-check"></i>Film Toevoegen
+              </button>
+              <button type="reset" class="btn-secondary btn-lg">
+                <i class="fas fa-undo"></i>Reset
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sidebar with Tips -->
+      <div class="form-sidebar">
+        <div class="info-card sticky-sidebar">
+          <h3><i class="fas fa-lightbulb"></i>Tips</h3>
+          <ul class="tips-list">
+            <li>
+              <strong>Wees compleet:</strong> Vul zoveel mogelijk velden in voor een betere presentatie
+            </li>
+            <li>
+              <strong>Goede afbeeldingen:</strong> Gebruik hoogwaardige posterafbeeldingen
+            </li>
+            <li>
+              <strong>Accurate informatie:</strong> Controleer je gegevens op juistheid
+            </li>
+            <li>
+              <strong>Beschrijvingen:</strong> Schrijf duidelijke, informatieve beschrijvingen
+            </li>
+            <li>
+              <strong>Cast:</strong> Voeg minimaal 2-3 hoofdrolspelers toe
+            </li>
+          </ul>
+
+          <div class="alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Let op:</strong> Velden gemarkeerd met * zijn verplicht
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Movie Explorer. Alle rechten voorbehouden.</p>
+      <p><a href="about.html">Over de maker</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Add cast member
+    function addCastMember() {
+      const container = document.getElementById('castContainer');
+      const newMember = document.createElement('div');
+      newMember.className = 'cast-member';
+      newMember.innerHTML = `
+        <div class="form-col-5">
+          <label class="form-label">Acteur Naam</label>
+          <input type="text" class="form-control" placeholder="Bijv. Tim Robbins">
+        </div>
+        <div class="form-col-5">
+          <label class="form-label">Rol</label>
+          <input type="text" class="form-control" placeholder="Bijv. Andy Dufresne">
+        </div>
+        <div class="form-col-2 cast-button">
+          <button type="button" class="btn-danger btn-full" onclick="removeCastMember(this)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      `;
+      container.appendChild(newMember);
+    }
+
+    // Remove cast member
+    function removeCastMember(button) {
+      const castMembers = document.querySelectorAll('.cast-member');
+      if (castMembers.length > 1) {
+        button.closest('.cast-member').remove();
+      } else {
+        alert('Er moet minimaal één cast lid zijn!');
+      }
+    }
+
+    // Form submission
+    document.getElementById('movieForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Collect form data
+      const formData = {
+        title: document.getElementById('movieTitle').value,
+        year: document.getElementById('movieYear').value,
+        director: document.getElementById('movieDirector').value,
+        duration: document.getElementById('movieDuration').value,
+        genre: document.getElementById('movieGenre').value,
+        language: document.getElementById('movieLanguage').value,
+        country: document.getElementById('movieCountry').value,
+        shortDesc: document.getElementById('movieShortDesc').value,
+        longDesc: document.getElementById('movieLongDesc').value,
+        rating: document.getElementById('movieRating').value,
+        reviews: document.getElementById('movieReviews').value,
+        image: document.getElementById('movieImage').value
+      };
+
+      // Collect cast data
+      const castMembers = [];
+      document.querySelectorAll('.cast-member').forEach(member => {
+        const inputs = member.querySelectorAll('input');
+        if (inputs[0].value && inputs[1].value) {
+          castMembers.push({
+            actor: inputs[0].value,
+            role: inputs[1].value
+          });
+        }
+      });
+      formData.cast = castMembers;
+
+      // In a real application, you would send this data to a server
+      console.log('Film data:', formData);
+      
+      // Show success message
+      alert('Film succesvol toegevoegd! 🎬\n\n' + 
+            'Titel: ' + formData.title + '\n' +
+            'Jaar: ' + formData.year + '\n' +
+            'Regisseur: ' + formData.director);
+      
+      // Reset form
+      this.reset();
+    });
+  </script>
+</body>
+</html>
